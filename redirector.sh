@@ -43,7 +43,7 @@ cd /app
 echo
 echo unzip application
 echo
-unzip /tmp/catalogue.zip &>/tmp/roboshop.log
+unzip /tmp/catalogue.zip &>>/tmp/roboshop.log
 
 cd /app
 
