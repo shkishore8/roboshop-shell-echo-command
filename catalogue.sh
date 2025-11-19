@@ -36,6 +36,7 @@ mkdir /app
 echo -e \\e[35m===============================================\\e[0m
 echo Download application content
 echo -e \\e[35m===============================================\\e[0m
+
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
 cd /app
 
