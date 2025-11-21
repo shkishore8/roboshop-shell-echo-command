@@ -10,7 +10,7 @@
  source comman-function.sh
  sample1
 
-
+# Access the variable across the function
 a=10
 source comman-function.sh
 sample
