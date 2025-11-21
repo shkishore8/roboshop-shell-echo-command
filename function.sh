@@ -7,6 +7,7 @@
  }
 
   #calling function
-
  sample
+
+ source comman-function.sh
  sample1
