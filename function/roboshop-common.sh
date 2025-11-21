@@ -1,45 +1,45 @@
 nodejs() {
  color=\\e[35m
  nocolor=\\e[0m
-   echo -e colorDisable default NodeJs nocolor
+   echo -e ${color}Disable default NodeJs ${nocolor}
   dnf module disable nodejs -y
 
-  echo -e colorEnable nodeJSnocolor
+  echo -e ${color}Enable nodeJS${nocolor}
   dnf module enable nodejs:20 -y
 
-  echo -e colorInstall nodeJSnocolor
+  echo -e ${color}Install nodeJS${nocolor}
   dnf install nodejs -y
 
-  echo -e colorAdd roboshop usernocolor
+  echo -e ${color}Add roboshop user${nocolor}
   useradd roboshop
 
-  echo -e colorCopy nodejs config filenocolor
+  echo -e ${color}Copy nodejs config file${nocolor}
   cp ${component}.service /etc/systemd/system/${component}.service
 
-  echo -e color copy mongodb repositorynocolor
+  echo -e ${color} copy mongodb repository${nocolor}
   cp mongo.repo /etc/yum.repos.d/mongo.repo
   rm -fr /app
   mkdir /app
 
- echo -e \\e[35eDownload catalogue source codenocolor
+ echo -e ${color}Download catalogue source code${nocolor}
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}-v3.zip
   cd /app
 
-  echo colorUnzip catalogue source filenocolor
+  echo ${color}Unzip catalogue source file${nocolor}
   unzip /tmp/${component}.zip
 
- echo -e colorinstall NodeJS dependenciesnocolor
+ echo -e ${color}install NodeJS dependencies${nocolor}
   cd /app
   npm install
 
- echo -e \\e[35 Install mongodb DBnocolor
+ echo -e ${color} Install mongodb DB${nocolor}
   dnf install mongodb-mongosh -y
-  echo -e colorAdd mongodb schema\\[0m
+  echo -e ${color}Add mongodb schema\\[0m
   mongosh --host 172.31.65.47 </app/db/master-data.js
 
 
   systemctl daemon-reload
- echo -e colorstart catalogue servicesnocolor
+ echo -e ${color}start catalogue services${nocolor}
   systemctl enable ${component}
   systemctl restart ${component}
 }
