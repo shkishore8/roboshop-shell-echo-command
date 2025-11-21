@@ -7,14 +7,14 @@ nodejs() {
 
   useradd roboshop
 
-  cp catalogue.service /etc/systemd/system/catalogue.service
+  cp ${component}.service /etc/systemd/system/${component}.service
   cp mongo.repo /etc/yum.repos.d/mongo.repo
   rm -fr /app
   mkdir /app
 
-  curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}-v3.zip
   cd /app
-  unzip /tmp/catalogue.zip
+  unzip /tmp/${component}.zip
 
   cd /app
   npm install
@@ -25,6 +25,6 @@ nodejs() {
 
   systemctl daemon-reload
 
-  systemctl enable catalogue
-  systemctl restart catalogue
+  systemctl enable ${component}
+  systemctl restart ${component}
 }
