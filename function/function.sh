@@ -12,6 +12,6 @@
 
 # Access the variable across the function
 a=10
-source comman-function.sh
+source common-function.sh
 sample
 echo b -$b
